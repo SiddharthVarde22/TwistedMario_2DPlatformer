@@ -15,9 +15,4 @@ public class InputService_PC : InputService
             OnJumpButtonPressedEvent?.Invoke();
         }
     }
-
-    //public override void GetVerticalInput()
-    //{
-    //    VerticalInput = Input.GetAxis("Vertical");
-    //}
 }

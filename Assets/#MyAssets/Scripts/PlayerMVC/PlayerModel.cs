@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerModel
 {
-    PlayerModelScriptable playerModelScriptable;
-    PlayerController playerController;
+    public PlayerModelScriptable playerModelScriptable;
+    private PlayerController playerController;
 
     public PlayerModel(PlayerModelScriptable playerModelScriptable, PlayerController playerController)
     {

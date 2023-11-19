@@ -9,8 +9,15 @@ public class PlayerSpawnService : MonoBehaviour
     [SerializeField]
     PlayerModelScriptable playerModelScriptable;
 
-    private void Awake()
+    InputService inputService;
+
+    public void SetInputService(InputService inputService)
     {
-        PlayerController playerController = new PlayerController(playerModelScriptable, playerView);
+        this.inputService = inputService;
+    }
+
+    public void CreatePlayer(InputService inputService)
+    {
+        PlayerController playerController = new PlayerController(playerModelScriptable, playerView, inputService);
     }
 }

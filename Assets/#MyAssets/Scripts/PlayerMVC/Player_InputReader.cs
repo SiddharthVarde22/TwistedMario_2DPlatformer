@@ -10,23 +10,40 @@ public class Player_InputReader : MonoBehaviour
 
     InputService currentInputService;
 
-    private void Start()
-    {
-        currentInputService = ServiceLocator.Instance.currentInputService;
-    }
-
     private void Update()
     {
         GetPlayerControllerIfNull();
+        GetPlayerInputServiceIfNull();
+        currentInputService.GetHorizontalInput();
+        currentInputService.GetJumpInput();
 
-        
+        playerController.MovePlayerHorizontal(currentInputService.HorizontalInput);
     }
 
-    public void GetPlayerControllerIfNull()
+    private void GetPlayerControllerIfNull()
     {
         if (playerController == null)
         {
             playerController = playerView.GetPlayerController();
         }
+    }
+
+    private void GetPlayerInputServiceIfNull()
+    {
+        if(playerController != null && currentInputService == null)
+        {
+            currentInputService = playerController.CurrentInputService;
+            currentInputService.OnJumpButtonPressedEvent += OnJumpButtonPressed;
+        }
+    }
+
+    public void OnJumpButtonPressed()
+    {
+        playerController.PlayerJumpPressed();
+    }
+
+    private void OnDestroy()
+    {
+        currentInputService.OnJumpButtonPressedEvent -= OnJumpButtonPressed;
     }
 }
