@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 4877497664291053465}
   - component: {fileID: 4877497664291053464}
   - component: {fileID: 3740837763862424455}
+  - component: {fileID: 1135958161540702416}
+  - component: {fileID: 8157212475630121922}
   m_Layer: 0
   m_Name: TwistedMario
   m_TagString: Untagged
@@ -155,3 +157,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerView: {fileID: 4877497664291053464}
+--- !u!114 &1135958161540702416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4877497664291053461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f3a20f2902f17d46b0257c7110697d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8157212475630121922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4877497664291053461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15a85c0768e748f4991be96f7a1f1009, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
