@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: PlayerModelScriptable
   m_EditorClassIdentifier: 
   playerSpeed: 10
-  playerJumpStrength: 15
+  playerJumpStrength: 75

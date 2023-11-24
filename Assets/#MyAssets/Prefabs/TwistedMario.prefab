@@ -118,7 +118,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 5
   m_LinearDrag: 1
   m_AngularDrag: 0.2
   m_GravityScale: 2
@@ -142,8 +142,8 @@ MonoBehaviour:
   playerRigidbody: {fileID: 4877497664291053465}
   groundDetectionLayer:
     serializedVersion: 2
-    m_Bits: 64
-  groundCheckRaycastDistance: 0.8
+    m_Bits: 320
+  groundCheckRaycastDistance: 0.75
 --- !u!114 &3740837763862424455
 MonoBehaviour:
   m_ObjectHideFlags: 0

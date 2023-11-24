@@ -15,4 +15,12 @@ public class InputService_PC : InputService
             OnJumpButtonPressedEvent?.Invoke();
         }
     }
+
+    public override void GetFireInput()
+    {
+        if(Input.GetButtonDown("Fire1"))
+        {
+            OnFireButtonPressedEvent?.Invoke();
+        }
+    }
 }

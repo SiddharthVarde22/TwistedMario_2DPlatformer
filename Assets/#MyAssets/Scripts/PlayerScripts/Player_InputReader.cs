@@ -16,6 +16,7 @@ public class Player_InputReader : MonoBehaviour
         GetPlayerInputServiceIfNull();
         currentInputService.GetHorizontalInput();
         currentInputService.GetJumpInput();
+        currentInputService.GetFireInput();
 
         playerController.MovePlayerHorizontal(currentInputService.HorizontalInput);
     }
@@ -33,8 +34,14 @@ public class Player_InputReader : MonoBehaviour
         if(playerController != null && currentInputService == null)
         {
             currentInputService = playerController.CurrentInputService;
-            currentInputService.OnJumpButtonPressedEvent += OnJumpButtonPressed;
+            SubscribeToInputEvents();
         }
+    }
+
+    private void SubscribeToInputEvents()
+    {
+        currentInputService.OnJumpButtonPressedEvent += OnJumpButtonPressed;
+        currentInputService.OnFireButtonPressedEvent += OnFireButtonPressed;
     }
 
     public void OnJumpButtonPressed()
@@ -42,8 +49,14 @@ public class Player_InputReader : MonoBehaviour
         playerController.PlayerJumpPressed();
     }
 
+    public void OnFireButtonPressed()
+    {
+        playerController.PlayerFirePressed();
+    }
+
     private void OnDestroy()
     {
         currentInputService.OnJumpButtonPressedEvent -= OnJumpButtonPressed;
+        currentInputService.OnFireButtonPressedEvent -= OnFireButtonPressed;
     }
 }

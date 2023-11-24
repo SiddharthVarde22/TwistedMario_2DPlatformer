@@ -10,14 +10,22 @@ public class PlayerSpawnService : MonoBehaviour
     PlayerModelScriptable playerModelScriptable;
 
     InputService inputService;
+    EventService eventService;
+
+    public PlayerController spawnedPlayerController { get; private set; }
 
     public void SetInputService(InputService inputService)
     {
         this.inputService = inputService;
     }
 
+    public void SetEventService(EventService eventService)
+    {
+        this.eventService = eventService;
+    }
+
     public void CreatePlayer(InputService inputService)
     {
-        PlayerController playerController = new PlayerController(playerModelScriptable, playerView, inputService);
+        spawnedPlayerController = new PlayerController(playerModelScriptable, playerView, inputService, eventService);
     }
 }

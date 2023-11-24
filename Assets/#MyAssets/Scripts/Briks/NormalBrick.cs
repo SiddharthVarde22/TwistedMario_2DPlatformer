@@ -6,6 +6,6 @@ public class NormalBrick : MonoBehaviour, IBreakable
 {
     public void OnObjectBroken()
     {
-        Destroy(gameObject);
+        Destroy(gameObject, 0.1f);
     }
 }

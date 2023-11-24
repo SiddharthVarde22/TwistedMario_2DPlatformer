@@ -25,7 +25,20 @@ public class PlayerView : MonoBehaviour
 
     public void MovePlayerHorizontally(float horizontalInput, float movementSpeed)
     {
-        transform.position += horizontalInput * movementSpeed * Time.deltaTime * transform.right;
+        RotatePlayer(horizontalInput);
+        transform.position += horizontalInput * movementSpeed * Time.deltaTime * Vector3.right;
+    }
+
+    private void RotatePlayer(float horizontalInput)
+    {
+        if(horizontalInput < 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+        else if(horizontalInput > 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
     }
 
     public void MakePlayerJump(float jumpStrength)
@@ -36,6 +49,10 @@ public class PlayerView : MonoBehaviour
         }
     }
 
+    public void MakePlayerShoot()
+    {
+        Debug.Log("Player shooting");
+    }
     private bool CheckIfIsGrounded()
     {
         return Physics2D.Raycast(transform.position, -1 * transform.up, groundCheckRaycastDistance, groundDetectionLayer);
