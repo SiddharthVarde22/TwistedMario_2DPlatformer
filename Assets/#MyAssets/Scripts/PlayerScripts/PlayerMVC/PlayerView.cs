@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerView : MonoBehaviour
 {
     PlayerController playerController;
+    IWeapon weapon;
 
     [SerializeField]
     Rigidbody2D playerRigidbody;
@@ -12,6 +13,10 @@ public class PlayerView : MonoBehaviour
     LayerMask groundDetectionLayer;
     [SerializeField]
     float groundCheckRaycastDistance = 0.8f;
+    [SerializeField]
+    Transform gunHoldingPlace;
+    [SerializeField]
+    Vector3 gunPositionOffset;
 
     public void SetPlayerController(PlayerController playerController)
     {
@@ -51,10 +56,24 @@ public class PlayerView : MonoBehaviour
 
     public void MakePlayerShoot()
     {
-        Debug.Log("Player shooting");
+        if(weapon != null)
+        {
+            weapon.OnWeaponFired();
+        }
     }
     private bool CheckIfIsGrounded()
     {
         return Physics2D.Raycast(transform.position, -1 * transform.up, groundCheckRaycastDistance, groundDetectionLayer);
+    }
+
+    public void CollectTheWeapon(IWeapon weapon)
+    {
+        if(this.weapon == null)
+        {
+            this.weapon = weapon;
+
+            ((Gun)this.weapon).gameObject.transform.parent = gunHoldingPlace;
+            ((Gun)this.weapon).transform.SetLocalPositionAndRotation(Vector3.zero + gunPositionOffset, Quaternion.identity);
+        }
     }
 }
