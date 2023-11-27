@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour, IWeapon
 {
-    //[SerializeField]
-    // bullet projectile
+    [SerializeField]
+    BulletView bulletPrefabToSpawn;
+    [SerializeField]
+    Transform bulletSpawnPosition;
 
     public void OnWeaponFired()
     {
-        //shoot the bullet
-        Debug.Log("Spawn bullet");
+        ServiceLocator.Instance.bulletSpawnService.SpawnBullet(bulletSpawnPosition, bulletPrefabToSpawn);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
