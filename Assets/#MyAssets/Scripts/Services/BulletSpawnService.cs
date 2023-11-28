@@ -6,7 +6,7 @@ public class BulletSpawnService
 {
     private GenericObjectPool<BulletView> bulletPool = new GenericObjectPool<BulletView>();
 
-    public void SpawnBullet(Transform tranaformToSpawnAt, BulletView bulletViewToSpawn)
+    public void SpawnBullet(Transform tranaformToSpawnAt, BulletView bulletViewToSpawn, PlayerView playerView)
     {
         BulletView spawnedBullet = bulletPool.GetObjectFromPool();
 
@@ -15,7 +15,7 @@ public class BulletSpawnService
             spawnedBullet = GameObject.Instantiate<BulletView>(bulletViewToSpawn);
         }
 
-        spawnedBullet.EnableBullet(tranaformToSpawnAt);
+        spawnedBullet.EnableBullet(tranaformToSpawnAt, playerView);
     }
 
     public void ReturnBullet(BulletView bulletView)

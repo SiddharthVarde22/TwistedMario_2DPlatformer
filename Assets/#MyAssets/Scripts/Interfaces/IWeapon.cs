@@ -1,5 +1,5 @@
 
 public interface IWeapon
 {
-    public void OnWeaponFired();
+    public void OnWeaponFired(PlayerView playerView);
 }

@@ -9,9 +9,9 @@ public class Gun : MonoBehaviour, IWeapon
     [SerializeField]
     Transform bulletSpawnPosition;
 
-    public void OnWeaponFired()
+    public void OnWeaponFired(PlayerView playerView)
     {
-        ServiceLocator.Instance.bulletSpawnService.SpawnBullet(bulletSpawnPosition, bulletPrefabToSpawn);
+        ServiceLocator.Instance.bulletSpawnService.SpawnBullet(bulletSpawnPosition, bulletPrefabToSpawn, playerView);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

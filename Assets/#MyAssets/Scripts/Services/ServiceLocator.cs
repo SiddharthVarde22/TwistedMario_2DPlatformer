@@ -11,6 +11,7 @@ public class ServiceLocator : GenericSingleton<ServiceLocator>
     public PlayerSpawnService playerSpawnerService { get; private set; }
     public EventService eventService { get; private set; }
     public BulletSpawnService bulletSpawnService { get; private set; }
+    public SceneLoadingService sceneLoader { get; private set; }
 
     protected override void Awake()
     {
@@ -18,6 +19,7 @@ public class ServiceLocator : GenericSingleton<ServiceLocator>
         currentInputService = new InputService_PC();
         eventService = new EventService();
         bulletSpawnService = new BulletSpawnService();
+        sceneLoader = new SceneLoadingService();
         playerSpawnerService = Instantiate<PlayerSpawnService>(playerSpawnerPrefab);
         playerSpawnerService.SetInputService(currentInputService);
         playerSpawnerService.SetEventService(eventService);

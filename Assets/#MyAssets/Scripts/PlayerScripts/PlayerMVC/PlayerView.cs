@@ -58,7 +58,7 @@ public class PlayerView : MonoBehaviour
     {
         if(weapon != null)
         {
-            weapon.OnWeaponFired();
+            weapon.OnWeaponFired(this);
         }
     }
     private bool CheckIfIsGrounded()
@@ -75,5 +75,15 @@ public class PlayerView : MonoBehaviour
             ((Gun)this.weapon).gameObject.transform.parent = gunHoldingPlace;
             ((Gun)this.weapon).transform.SetLocalPositionAndRotation(Vector3.zero + gunPositionOffset, Quaternion.identity);
         }
+    }
+
+    public void OnCollidedWithObstacle()
+    {
+        ServiceLocator.Instance.sceneLoader.ReloadScene();
+    }
+
+    public void OnEnemyKilled()
+    {
+        Debug.Log("Enemy killed");
     }
 }

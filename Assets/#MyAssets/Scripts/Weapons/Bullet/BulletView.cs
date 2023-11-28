@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletView : MonoBehaviour
+public class BulletView : MonoBehaviour, IDamager
 {
     [SerializeField]
     float forceToAdd = 10;
@@ -12,13 +12,15 @@ public class BulletView : MonoBehaviour
     float lifeTime = 3f;
 
     float currentTime;
+    PlayerView owningPlayer;
 
-    public void EnableBullet(Transform initialTransform)
+    public void EnableBullet(Transform initialTransform, PlayerView playerView)
     {
         transform.SetPositionAndRotation(initialTransform.position, initialTransform.rotation);
         gameObject.SetActive(true);
         bulletRigidBody.AddForce(forceToAdd * transform.right, ForceMode2D.Impulse);
         currentTime = 0;
+        this.owningPlayer = playerView;
     }
 
     private void Update()
@@ -40,5 +42,10 @@ public class BulletView : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         DisableBullet();
+    }
+
+    public void OnDamagePerformed()
+    {
+        owningPlayer.OnEnemyKilled();
     }
 }
