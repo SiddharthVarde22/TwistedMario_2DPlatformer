@@ -79,7 +79,7 @@ public class PlayerView : MonoBehaviour
 
     public void OnCollidedWithObstacle()
     {
-        ServiceLocator.Instance.sceneLoader.ReloadScene();
+        ServiceLocator.Instance.sceneLoader.LoadGameLoseLevel();
     }
 
     public void OnEnemyKilled()

@@ -6,6 +6,8 @@ public class ServiceLocator : GenericSingleton<ServiceLocator>
 {
     [SerializeField]
     public PlayerSpawnService playerSpawnerPrefab;
+    [SerializeField]
+    int gameWinBuildIndex, gameLoseBuildIndex, mainMenuBuildIndex;
 
     public InputService currentInputService { get; private set; }
     public PlayerSpawnService playerSpawnerService { get; private set; }
@@ -19,13 +21,19 @@ public class ServiceLocator : GenericSingleton<ServiceLocator>
         currentInputService = new InputService_PC();
         eventService = new EventService();
         bulletSpawnService = new BulletSpawnService();
-        sceneLoader = new SceneLoadingService();
+        sceneLoader = new SceneLoadingService(gameWinBuildIndex, gameLoseBuildIndex, mainMenuBuildIndex);
+
         playerSpawnerService = Instantiate<PlayerSpawnService>(playerSpawnerPrefab);
         playerSpawnerService.SetInputService(currentInputService);
         playerSpawnerService.SetEventService(eventService);
     }
 
-    private void Start()
+    //private void Start()
+    //{
+    //    playerSpawnerService.CreatePlayer(currentInputService);
+    //}
+
+    public void SpawnThePlayer()
     {
         playerSpawnerService.CreatePlayer(currentInputService);
     }
